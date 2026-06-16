@@ -177,7 +177,9 @@ function setupContactForm() {
   });
 }
 function setupPortfolioTooltip() {
-  const items = document.querySelectorAll<HTMLElement>(".portfolio-inner[data-tooltip]");
+  const items = document.querySelectorAll<HTMLElement>(
+    ".portfolio-inner[data-tooltip]",
+  );
   if (items.length === 0) return;
 
   const tooltip = document.createElement("div");
@@ -200,6 +202,64 @@ function setupPortfolioTooltip() {
     });
   });
 }
+
+function setupPortfolioCarEffect() {
+  const items = document.querySelectorAll<HTMLElement>(
+    ".portfolio-inner[data-tooltip]",
+  );
+  if (items.length === 0) return;
+
+  const car = document.createElement("div");
+  car.className = "portfolio-car";
+  car.textContent = "🚗";
+  document.body.appendChild(car);
+
+  let lastX = 0;
+  let lastY = 0;
+  let smokeTimer = 0;
+
+  const spawnSmoke = (x: number, y: number) => {
+    const puff = document.createElement("div");
+    puff.className = "smoke-puff";
+    const size = 6 + Math.random() * 6;
+    puff.style.width = `${size}px`;
+    puff.style.height = `${size}px`;
+    puff.style.left = `${x - size / 2}px`;
+    puff.style.top = `${y - size / 2}px`;
+    document.body.appendChild(puff);
+    window.setTimeout(() => puff.remove(), 650);
+  };
+
+  items.forEach((item) => {
+    item.addEventListener("mouseenter", () => {
+      car.classList.add("show");
+    });
+
+    item.addEventListener("mousemove", (event) => {
+      const dx = event.clientX - lastX;
+      const movingLeft = dx < 0;
+
+      car.style.left = `${event.clientX}px`;
+      car.style.top = `${event.clientY}px`;
+      car.style.transform = `translate(-50%, -50%) scaleX(${movingLeft ? -1 : 1})`;
+
+      lastX = event.clientX;
+      lastY = event.clientY;
+
+      const now = performance.now();
+      if (now - smokeTimer > 80) {
+        smokeTimer = now;
+        const offset = movingLeft ? 12 : -12;
+        spawnSmoke(event.clientX + offset, event.clientY + 6);
+      }
+    });
+
+    item.addEventListener("mouseleave", () => {
+      car.classList.remove("show");
+    });
+  });
+}
+
 startTypingEffect();
 setupHeaderScroll();
 setupSmoothScroll();
@@ -208,3 +268,4 @@ setupInlineLinkButtons();
 setupContactForm();
 setupPortfolioModals();
 setupPortfolioTooltip();
+setupPortfolioCarEffect();

@@ -968,3 +968,35 @@ section.novel .novel-content button:hover {
   opacity: 1;
   transform: translate(-50%, -140%) scale(1);
 }
+/* portfolio car cursor effect */
+.portfolio-car {
+  position: fixed;
+  pointer-events: none;
+  font-size: 1.6rem;
+  z-index: 199;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.15s ease;
+}
+.portfolio-car.show {
+  opacity: 1;
+}
+
+.smoke-puff {
+  position: fixed;
+  pointer-events: none;
+  z-index: 198;
+  border-radius: 50%;
+  background-color: rgba(150, 150, 150, 0.55);
+  animation: smokeFade 0.6s ease-out forwards;
+}
+@keyframes smokeFade {
+  0% {
+    opacity: 0.6;
+    transform: scale(0.4);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.6) translateY(8px);
+  }
+}
