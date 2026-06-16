@@ -5,7 +5,7 @@ const typingWords = [
   "Web Publisher",
   "CAD Designer",
   "Solar Engineer",
-  "Problem Solver"
+  "Problem Solver",
 ];
 
 function startTypingEffect() {
@@ -69,12 +69,14 @@ function moveToSection(selector: string) {
 
   window.scrollTo({
     top: targetScrollY - headerHeight,
-    behavior: "smooth"
+    behavior: "smooth",
   });
 }
 
 function setupSmoothScroll() {
-  const scrollMoveEls = document.querySelectorAll<HTMLElement>("[data-animation-scroll='true']");
+  const scrollMoveEls = document.querySelectorAll<HTMLElement>(
+    "[data-animation-scroll='true']",
+  );
 
   scrollMoveEls.forEach((element) => {
     element.addEventListener("click", () => {
@@ -85,7 +87,8 @@ function setupSmoothScroll() {
 }
 
 function setupPortfolioLinks() {
-  const blogButtons = document.querySelectorAll<HTMLElement>("[data-blog-link]");
+  const blogButtons =
+    document.querySelectorAll<HTMLElement>("[data-blog-link]");
 
   blogButtons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -96,7 +99,8 @@ function setupPortfolioLinks() {
 }
 
 function setupInlineLinkButtons() {
-  const linkButtons = document.querySelectorAll<HTMLButtonElement>(".add-link-btn");
+  const linkButtons =
+    document.querySelectorAll<HTMLButtonElement>(".add-link-btn");
 
   linkButtons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -108,7 +112,10 @@ function setupInlineLinkButtons() {
         return;
       }
 
-      const url = window.prompt("추가할 링크 주소를 입력하세요.", "https://taxtaros.blogspot.com");
+      const url = window.prompt(
+        "추가할 링크 주소를 입력하세요.",
+        "https://taxtaros.blogspot.com",
+      );
       if (!url) return;
 
       const range = selection.getRangeAt(0);
@@ -169,7 +176,30 @@ function setupContactForm() {
     }
   });
 }
+function setupPortfolioTooltip() {
+  const items = document.querySelectorAll<HTMLElement>(".portfolio-inner[data-tooltip]");
+  if (items.length === 0) return;
 
+  const tooltip = document.createElement("div");
+  tooltip.className = "portfolio-tooltip";
+  document.body.appendChild(tooltip);
+
+  items.forEach((item) => {
+    item.addEventListener("mouseenter", () => {
+      tooltip.textContent = item.dataset.tooltip ?? "";
+      tooltip.classList.add("show");
+    });
+
+    item.addEventListener("mousemove", (event) => {
+      tooltip.style.left = `${event.clientX}px`;
+      tooltip.style.top = `${event.clientY}px`;
+    });
+
+    item.addEventListener("mouseleave", () => {
+      tooltip.classList.remove("show");
+    });
+  });
+}
 startTypingEffect();
 setupHeaderScroll();
 setupSmoothScroll();
@@ -177,3 +207,4 @@ setupPortfolioLinks();
 setupInlineLinkButtons();
 setupContactForm();
 setupPortfolioModals();
+setupPortfolioTooltip();
