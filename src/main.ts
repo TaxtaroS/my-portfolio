@@ -209,27 +209,22 @@ function setupPortfolioCarEffect() {
   );
   if (items.length === 0) return;
 
-  // 기본 방향: 오른쪽을 바라보는 빨간 픽업트럭
-  // 기본 방향: 오른쪽을 바라보는 녹색 미니쿠퍼
-  const carSvg = `
-    <svg viewBox="0 0 100 56" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="50" cy="48" rx="42" ry="4" fill="rgba(0,0,0,0.15)"/>
-      <path d="M10 38 C10 28 18 16 30 14 L34 14 C38 8 46 6 54 6 C62 6 68 9 72 14 L74 14
-               C84 15 92 24 94 34 L94 38 C94 41 91 43 88 43 L14 43 C11 43 10 41 10 38 Z"
+  // 기본 방향: 오른쪽을 향해 날아가는 로켓
+  const rocketSvg = `
+    <svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 25 L70 14 C82 12 92 18 96 25 C92 32 82 38 70 36 L20 25 Z"
             fill="#14532d" stroke="#0c3a1f" stroke-width="1.5"/>
-      <path d="M34 14 C38 9 46 7 54 7 C61 7 67 10 71 14 Z" fill="#cfe8d8" opacity="0.85"/>
-      <rect x="10" y="30" width="84" height="3" fill="#e8e8e8" opacity="0.7"/>
-      <circle cx="28" cy="44" r="9" fill="#1c1c1c"/>
-      <circle cx="28" cy="44" r="4" fill="#bbb"/>
-      <circle cx="76" cy="44" r="9" fill="#1c1c1c"/>
-      <circle cx="76" cy="44" r="4" fill="#bbb"/>
-      <circle cx="90" cy="26" r="2.4" fill="#fff7d6"/>
+      <path d="M70 14 C78 13 86 16 92 21 L92 29 C86 34 78 37 70 36 Z"
+            fill="#cfe8d8" opacity="0.85"/>
+      <circle cx="78" cy="25" r="5" fill="#fff7d6" stroke="#0c3a1f" stroke-width="1"/>
+      <path d="M22 19 L8 14 L20 23 Z" fill="#0c3a1f"/>
+      <path d="M22 31 L8 36 L20 27 Z" fill="#0c3a1f"/>
     </svg>
   `;
 
   const car = document.createElement("div");
   car.className = "portfolio-car";
-  car.innerHTML = carSvg;
+  car.innerHTML = rocketSvg;
   document.body.appendChild(car);
 
   let lastX = 0;
@@ -267,11 +262,11 @@ function setupPortfolioCarEffect() {
       lastX = event.clientX;
 
       const now = performance.now();
-      if (now - smokeTimer > 80) {
+      if (now - smokeTimer > 70) {
         smokeTimer = now;
-        // 진행 방향의 반대쪽(차 뒤꽁무니)에서 연기 발생
+        // 진행 방향의 반대쪽(분사구)에서 연기/화염 발생
         const offset = movingLeft ? 18 : -18;
-        spawnSmoke(event.clientX + offset, event.clientY + 8);
+        spawnSmoke(event.clientX + offset, event.clientY);
       }
     });
 
