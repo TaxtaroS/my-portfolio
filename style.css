@@ -969,9 +969,11 @@ section.novel .novel-content button:hover {
   transform: translate(-50%, -140%) scale(1);
 }
 /* portfolio car cursor effect */
-.portfolio-inner {
-  cursor: none;
+.portfolio-inner,
+.portfolio-inner * {
+  cursor: none !important;
 }
+
 
 .portfolio-car {
   position: fixed;
