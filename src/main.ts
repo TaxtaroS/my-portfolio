@@ -204,9 +204,13 @@ function setupPortfolioTooltip() {
 }
 
 function setupPortfolioCarEffect() {
-  const items = document.querySelectorAll<HTMLElement>(".portfolio-inner[data-tooltip]");
+  const items = document.querySelectorAll<HTMLElement>(
+    ".portfolio-inner[data-tooltip]",
+  );
   if (items.length === 0) return;
 
+  // 기본 방향: 오른쪽을 바라보는 빨간 픽업트럭
+  // 기본 방향: 오른쪽을 바라보는 녹색 미니쿠퍼
   const carSvg = `
     <svg viewBox="0 0 100 56" xmlns="http://www.w3.org/2000/svg">
       <ellipse cx="50" cy="48" rx="42" ry="4" fill="rgba(0,0,0,0.15)"/>
@@ -230,7 +234,7 @@ function setupPortfolioCarEffect() {
 
   let lastX = 0;
   let smokeTimer = 0;
-  let facingLeft = false;
+  let movingLeft = false;
 
   const spawnSmoke = (x: number, y: number) => {
     const puff = document.createElement("div");
@@ -252,20 +256,21 @@ function setupPortfolioCarEffect() {
     item.addEventListener("mousemove", (event) => {
       const dx = event.clientX - lastX;
       if (Math.abs(dx) > 1) {
-        facingLeft = dx < 0;
+        movingLeft = dx < 0;
       }
 
       car.style.left = `${event.clientX}px`;
       car.style.top = `${event.clientY}px`;
-      car.style.transform = `translate(-50%, -50%) scaleX(${facingLeft ? -1 : 1})`;
+      // 기본 SVG는 오른쪽을 향함 -> 왼쪽으로 이동할 때만 좌우 반전
+      car.style.transform = `translate(-50%, -50%) scaleX(${movingLeft ? -1 : 1})`;
 
       lastX = event.clientX;
 
       const now = performance.now();
       if (now - smokeTimer > 80) {
         smokeTimer = now;
-        // 차가 바라보는 방향의 "반대쪽"이 배기구 -> 진행 방향 뒤쪽에서 연기
-        const offset = facingLeft ? 18 : -18;
+        // 진행 방향의 반대쪽(차 뒤꽁무니)에서 연기 발생
+        const offset = movingLeft ? 18 : -18;
         spawnSmoke(event.clientX + offset, event.clientY + 8);
       }
     });
