@@ -969,10 +969,15 @@ section.novel .novel-content button:hover {
   transform: translate(-50%, -140%) scale(1);
 }
 /* portfolio car cursor effect */
+.portfolio-inner {
+  cursor: none;
+}
+
 .portfolio-car {
   position: fixed;
   pointer-events: none;
-  font-size: 1.6rem;
+  width: 42px;
+  height: 24px;
   z-index: 199;
   opacity: 0;
   transform: translate(-50%, -50%);
@@ -980,6 +985,11 @@ section.novel .novel-content button:hover {
 }
 .portfolio-car.show {
   opacity: 1;
+}
+.portfolio-car svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .smoke-puff {

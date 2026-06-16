@@ -204,19 +204,33 @@ function setupPortfolioTooltip() {
 }
 
 function setupPortfolioCarEffect() {
-  const items = document.querySelectorAll<HTMLElement>(
-    ".portfolio-inner[data-tooltip]",
-  );
+  const items = document.querySelectorAll<HTMLElement>(".portfolio-inner[data-tooltip]");
   if (items.length === 0) return;
+
+  const carSvg = `
+    <svg viewBox="0 0 100 56" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="50" cy="48" rx="42" ry="4" fill="rgba(0,0,0,0.15)"/>
+      <path d="M10 38 C10 28 18 16 30 14 L34 14 C38 8 46 6 54 6 C62 6 68 9 72 14 L74 14
+               C84 15 92 24 94 34 L94 38 C94 41 91 43 88 43 L14 43 C11 43 10 41 10 38 Z"
+            fill="#14532d" stroke="#0c3a1f" stroke-width="1.5"/>
+      <path d="M34 14 C38 9 46 7 54 7 C61 7 67 10 71 14 Z" fill="#cfe8d8" opacity="0.85"/>
+      <rect x="10" y="30" width="84" height="3" fill="#e8e8e8" opacity="0.7"/>
+      <circle cx="28" cy="44" r="9" fill="#1c1c1c"/>
+      <circle cx="28" cy="44" r="4" fill="#bbb"/>
+      <circle cx="76" cy="44" r="9" fill="#1c1c1c"/>
+      <circle cx="76" cy="44" r="4" fill="#bbb"/>
+      <circle cx="90" cy="26" r="2.4" fill="#fff7d6"/>
+    </svg>
+  `;
 
   const car = document.createElement("div");
   car.className = "portfolio-car";
-  car.textContent = "🚗";
+  car.innerHTML = carSvg;
   document.body.appendChild(car);
 
   let lastX = 0;
-  let lastY = 0;
   let smokeTimer = 0;
+  let facingLeft = false;
 
   const spawnSmoke = (x: number, y: number) => {
     const puff = document.createElement("div");
@@ -237,20 +251,22 @@ function setupPortfolioCarEffect() {
 
     item.addEventListener("mousemove", (event) => {
       const dx = event.clientX - lastX;
-      const movingLeft = dx < 0;
+      if (Math.abs(dx) > 1) {
+        facingLeft = dx < 0;
+      }
 
       car.style.left = `${event.clientX}px`;
       car.style.top = `${event.clientY}px`;
-      car.style.transform = `translate(-50%, -50%) scaleX(${movingLeft ? -1 : 1})`;
+      car.style.transform = `translate(-50%, -50%) scaleX(${facingLeft ? -1 : 1})`;
 
       lastX = event.clientX;
-      lastY = event.clientY;
 
       const now = performance.now();
       if (now - smokeTimer > 80) {
         smokeTimer = now;
-        const offset = movingLeft ? 12 : -12;
-        spawnSmoke(event.clientX + offset, event.clientY + 6);
+        // 차가 바라보는 방향의 "반대쪽"이 배기구 -> 진행 방향 뒤쪽에서 연기
+        const offset = facingLeft ? 18 : -18;
+        spawnSmoke(event.clientX + offset, event.clientY + 8);
       }
     });
 
