@@ -124,6 +124,8 @@ function setupInlineLinkButtons() {
   });
 }
 
+import { setupPortfolioModals } from "./portfolioModals";
+
 function setupContactForm() {
   const form = document.querySelector<HTMLFormElement>(".contact form");
   if (!form) return;
@@ -168,146 +170,10 @@ function setupContactForm() {
   });
 }
 
-function setupResumeModal() {
-  const modal = document.querySelector<HTMLElement>("#resume-modal");
-  const openButton = document.querySelector<HTMLElement>("[data-resume-open='true']");
-  const closeButtons = document.querySelectorAll<HTMLElement>("[data-resume-close='true']");
-  if (!modal || !openButton) return;
-
-  const openModal = () => {
-    modal.classList.add("is-open");
-    modal.setAttribute("aria-hidden", "false");
-    document.body.classList.add("resume-modal-open");
-  };
-
-  const closeModal = () => {
-    modal.classList.remove("is-open");
-    modal.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("resume-modal-open");
-  };
-
-  openButton.addEventListener("click", openModal);
-  closeButtons.forEach((button) => {
-    button.addEventListener("click", closeModal);
-  });
-
-  window.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && modal.classList.contains("is-open")) {
-      closeModal();
-    }
-  });
-}
-
-function setupVideoModal() {
-  const videoModal = document.querySelector<HTMLElement>('#video-modal');
-  const contentEl = videoModal ? videoModal.querySelector<HTMLElement>('.video-modal__content') : null;
-  const openBtns = document.querySelectorAll<HTMLElement>('[data-video]');
-
-  if (!videoModal || !contentEl) return;
-  const modal = videoModal;
-  const content = contentEl;
-
-  const isYouTube = (url?: string) => /youtube\.com|youtu\.be/.test(url || '');
-
-  function openVideo(src?: string, poster?: string) {
-    if (!src) return;
-    content.innerHTML = '';
-    if (isYouTube(src)) {
-      const idMatch = src.match(/(?:v=|\/)([0-9A-Za-z_-]{11})/);
-      const id = idMatch ? idMatch[1] : null;
-      const iframe = document.createElement('iframe');
-      iframe.className = 'video-modal__iframe';
-      iframe.setAttribute('allowfullscreen','');
-      iframe.setAttribute('frameborder','0');
-      iframe.src = id ? `https://www.youtube.com/embed/${id}?rel=0&autoplay=1` : src;
-      content.appendChild(iframe);
-    } else {
-      const v = document.createElement('video');
-      v.className = 'video-modal__video';
-      v.controls = true;
-      v.preload = 'metadata';
-      v.src = src;
-      if (poster) v.poster = poster;
-      content.appendChild(v);
-      v.play().catch(()=>{});
-    }
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('video-modal-open');
-  }
-
-  function closeVideo() {
-    const el = content.firstElementChild as HTMLElement | null;
-    if (el && el.tagName === 'VIDEO'){
-      try { (el as HTMLVideoElement).pause(); (el as HTMLVideoElement).removeAttribute('src'); (el as HTMLVideoElement).load(); } catch(e){}
-    }
-    content.innerHTML = '';
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('video-modal-open');
-  }
-
-  openBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const src = btn.dataset.video;
-      const poster = btn.dataset.poster;
-      openVideo(src, poster);
-    });
-  });
-
-  videoModal.addEventListener('click', (e) => {
-    const target = e.target as HTMLElement;
-    if (target.dataset.videoClose === 'true' || target.closest('[data-video-close]')) {
-      closeVideo();
-    }
-  });
-
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && videoModal.classList.contains('is-open')) closeVideo();
-  });
-}
-
-function setupCertModal() {
-  const modal = document.querySelector<HTMLElement>('#cert-modal');
-  const openButton = document.querySelector<HTMLElement>('[data-cert-open="true"]');
-  const closeButtons = document.querySelectorAll<HTMLElement>('[data-cert-close="true"]');
-  if (!modal || !openButton) return;
-
-  const openModal = () => {
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('cert-modal-open');
-  };
-
-  const closeModal = () => {
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('cert-modal-open');
-  };
-
-  openButton.addEventListener('click', openModal);
-  closeButtons.forEach((button) => button.addEventListener('click', closeModal));
-
-  modal.addEventListener('click', (e) => {
-    const target = e.target as HTMLElement;
-    if (target.dataset.certClose === 'true' || target.closest('[data-cert-close]')) {
-      closeModal();
-    }
-  });
-
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('is-open')) {
-      closeModal();
-    }
-  });
-}
-
 startTypingEffect();
 setupHeaderScroll();
 setupSmoothScroll();
 setupPortfolioLinks();
 setupInlineLinkButtons();
 setupContactForm();
-setupResumeModal();
-setupVideoModal();
-setupCertModal();
+setupPortfolioModals();
