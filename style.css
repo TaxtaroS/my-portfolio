@@ -1440,7 +1440,7 @@ body.smart-modal-open {
   font-weight: 700;
 }
 .smart-result {
-  padding: 20px;
+  padding: 22px 20px 28px;
   border: 1px solid #dbe6df;
   background-color: #f7fbf8;
 }
@@ -1457,18 +1457,41 @@ body.smart-modal-open {
 .smart-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 16px;
+  gap: 12px;
+  margin-top: 26px;
+  padding-top: 18px;
+  border-top: 1px solid #dbe6df;
 }
 .smart-links a {
   display: inline-flex;
   align-items: center;
-  min-height: 40px;
-  padding: 0 14px;
+  gap: 8px;
+  min-height: 46px;
+  padding: 0 18px;
   border-radius: 999px;
   background-color: #14532d;
   color: #ffffff;
   font-weight: 800;
+}
+.smart-links a:hover {
+  background-color: #0f3d2e;
+}
+.smart-links i,
+.notion-link-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  font-size: 1rem;
+  line-height: 1;
+}
+.notion-link-mark {
+  border: 1px solid currentColor;
+  font-family: Arial, sans-serif;
+  font-size: 0.74rem;
+  font-weight: 900;
 }
 
 @media (max-width: 576px) {
@@ -1547,6 +1570,13 @@ body.smart-modal-open {
   }
   .smart-section__title {
     display: block;
+  }
+  .smart-links {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .smart-links a {
+    justify-content: center;
   }
 }
 

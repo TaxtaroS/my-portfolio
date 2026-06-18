@@ -704,13 +704,14 @@
             <section class="smart-hero smart-hero--owpml">
               <div class="smart-hero__copy">
                 <span>Hancom AI Academy · AI Developer Course 4th</span>
-                <h3>OWPML을 활용한 문서 요약 웹 프로젝트</h3>
+                <h3>PaperMate · OWPML 기반 문서 질의응답 서비스</h3>
                 <p>
-                  한컴 AI 아카데미에서 진행 중인 팀 프로젝트로, 한글 문서의
-                  구조화된 문서 데이터를 웹에서 다루고 핵심 내용을 요약해
-                  사용자가 빠르게 문서를 파악할 수 있도록 만드는 서비스입니다.
-                  영상으로 정리하던 AI 학습 기록을 실제 프로젝트 성공사례로
-                  옮겨, 문제 정의와 구현 방향이 드러나도록 정리했습니다.
+                  PDF, HWP/HWPX, DOCX, TXT, 이미지 문서를 업로드하면 AI가
+                  내용을 요약하고 문서 근거 기반으로 질문에 답변하며, 분석
+                  결과를 표·그래프·이미지형 시각화와 프로젝트 공유 흐름으로
+                  연결하는 웹 서비스입니다. 한컴 AI 아카데미 팀 프로젝트에서
+                  백엔드 API, 문서 분석, 시각화, 프로젝트 저장 흐름을 중심으로
+                  정리했습니다.
                 </p>
               </div>
               <img src="image/mock2.png" alt="OWPML 문서 요약 웹 프로젝트 화면 이미지" />
@@ -719,19 +720,19 @@
             <div class="smart-kpis" aria-label="OWPML 프로젝트 핵심 지표">
               <div>
                 <strong>OWPML</strong>
-                <span>문서 구조 분석과 텍스트 추출</span>
+                <span>HWP/HWPX 문서 구조 분석과 텍스트 추출</span>
               </div>
               <div>
-                <strong>AI Summary</strong>
-                <span>핵심 문장과 요약 결과 제공</span>
+                <strong>Q&A</strong>
+                <span>요약, 키워드, 근거 기반 질의응답</span>
               </div>
               <div>
-                <strong>Web</strong>
-                <span>업로드, 처리 상태, 결과 화면 구성</span>
+                <strong>Visual</strong>
+                <span>표, 그래프, 이미지, 마인드맵 생성</span>
               </div>
               <div>
-                <strong>Academy</strong>
-                <span>AI 개발자 과정 진행 프로젝트</span>
+                <strong>Share</strong>
+                <span>프로젝트 저장과 초대 코드 기반 공유</span>
               </div>
             </div>
 
@@ -747,19 +748,49 @@
                   </p>
                 </article>
                 <article>
-                  <h4>한글 문서 포맷 활용</h4>
+                  <h4>다양한 문서 포맷 활용</h4>
                   <p>
-                    OWPML 기반 문서 데이터를 다루며 제목, 문단, 본문과 같은
-                    구조 정보를 웹 서비스의 입력 데이터로 연결하는 것이
-                    프로젝트의 핵심 출발점이었습니다.
+                    HWP/HWPX뿐 아니라 PDF, DOCX, TXT, 이미지까지 분석
+                    대상으로 확장해야 했고, 문서별 추출 결과를 같은 분석
+                    파이프라인으로 연결해야 했습니다.
                   </p>
                 </article>
                 <article>
                   <h4>AI 학습의 프로젝트화</h4>
                   <p>
-                    단순 모델 호출이 아니라 문서 업로드부터 추출, 요약, 결과
-                    표시까지 사용자가 체감할 수 있는 서비스 흐름으로 만드는 데
-                    초점을 두었습니다.
+                    단순 모델 호출이 아니라 업로드, 미리보기, 답변, 시각화,
+                    프로젝트 저장, 공유방 협업까지 사용자가 체감할 수 있는
+                    서비스 흐름으로 만드는 데 초점을 두었습니다.
+                  </p>
+                </article>
+              </div>
+            </section>
+
+            <section class="smart-section">
+              <h3>Architecture · 전체 구조</h3>
+              <div class="smart-grid">
+                <article>
+                  <h4>React + TypeScript</h4>
+                  <p>
+                    Home, Analysis, Project, Share, Mypage 화면에서 파일
+                    업로드, 채팅, 원본 미리보기, 시각화 결과를 한 화면 흐름으로
+                    연결했습니다.
+                  </p>
+                </article>
+                <article>
+                  <h4>FastAPI Backend</h4>
+                  <p>
+                    auth, analysis, visuals, projects, shared_rooms 라우터를
+                    분리하고 JWT 인증, 요청 ID, MongoDB 연동 구조로 API 서버를
+                    구성했습니다.
+                  </p>
+                </article>
+                <article>
+                  <h4>Analysis Pipeline</h4>
+                  <p>
+                    document_analysis.py, llm_analysis.py,
+                    analysis_pipeline.py를 통해 문서 추출, 로컬 분석, LLM 분석,
+                    근거 검증, 시각화 생성을 연결했습니다.
                   </p>
                 </article>
               </div>
@@ -770,19 +801,19 @@
               <div class="smart-timeline">
                 <div>
                   <span>01</span>
-                  <p>문서 업로드 후 OWPML 구조에서 요약에 필요한 텍스트 단위를 추출하는 흐름을 설계했습니다.</p>
+                  <p>파일과 질문을 입력하면 /api/analysis/chat으로 전달하고, 문서 텍스트를 추출하는 흐름을 설계했습니다.</p>
                 </div>
                 <div>
                   <span>02</span>
-                  <p>추출된 문서를 그대로 전달하지 않고 제목, 문단, 핵심 후보 문장 단위로 정리하는 전처리 관점을 잡았습니다.</p>
+                  <p>관련 구간, 수치 후보, grounding 검증을 통해 AI 답변이 문서 근거와 맞는지 확인하는 구조를 잡았습니다.</p>
                 </div>
                 <div>
                   <span>03</span>
-                  <p>요약 결과를 사용자가 비교하고 복사할 수 있도록 웹 화면의 정보 구조를 구성했습니다.</p>
+                  <p>분석 답변을 기반으로 표, 그래프, 이미지, 마인드맵 시각화 API와 연결했습니다.</p>
                 </div>
                 <div>
                   <span>04</span>
-                  <p>학습 기록 영상과 노션 문서를 함께 남겨 프로젝트 의도, 진행 과정, 개선점을 설명할 수 있게 정리했습니다.</p>
+                  <p>분석 대화, 파일, 시각화 결과를 프로젝트 단위로 저장하고 초대 코드 기반 공유방으로 확장했습니다.</p>
                 </div>
               </div>
             </section>
@@ -790,13 +821,24 @@
             <section class="smart-section smart-result">
               <h3>Result · 현재 성과와 성장 포인트</h3>
               <ul>
-                <li>웹, 문서 파싱, AI 요약을 하나의 사용자 흐름으로 연결하는 프로젝트 경험을 쌓고 있습니다.</li>
-                <li>문서 포맷을 이해하고 필요한 데이터만 정리해 AI 입력 품질을 높이는 관점을 익히고 있습니다.</li>
-                <li>향후에는 요약 품질 비교, 문단별 근거 표시, 파일별 이력 관리까지 확장할 수 있는 구조를 목표로 합니다.</li>
+                <li>업로드, 미리보기, 문서 기반 답변, 시각화, 저장으로 이어지는 핵심 서비스 흐름을 구현했습니다.</li>
+                <li>FastAPI 라우터와 서비스 레이어를 분리해 인증, 분석, 시각화, 프로젝트, 공유방 기능을 확장하기 쉽게 구성했습니다.</li>
+                <li>OpenAI 응답 실패나 키 미설정 상황에서도 로컬 분석 결과를 제공하는 fallback 관점을 반영했습니다.</li>
+                <li>향후에는 RAG 검색 고도화, 페이지·문단 근거 표시, LLM 응답 캐싱, 비동기 작업 큐로 발전시킬 계획입니다.</li>
               </ul>
               <div class="smart-links">
-                <a href="https://youtu.be/Sc2-2z0TjoU" target="_blank" rel="noreferrer">프로젝트 영상 보기</a>
-                <a href="https://sniperfactory1.notion.site/AI-4-X-to-O-352d8844b38781a39bc0ceeac7123594?source=copy_link" target="_blank" rel="noreferrer">노션 기록 보기</a>
+                <a href="https://youtu.be/Sc2-2z0TjoU" target="_blank" rel="noreferrer">
+                  <i class="fa-brands fa-youtube"></i>
+                  프로젝트 영상 보기
+                </a>
+                <a href="https://sniperfactory1.notion.site/AI-4-X-to-O-352d8844b38781a39bc0ceeac7123594?source=copy_link" target="_blank" rel="noreferrer">
+                  <span class="notion-link-mark">N</span>
+                  노션 기록 보기
+                </a>
+                <a href="https://taxtaros.github.io/architecture/" target="_blank" rel="noreferrer">
+                  <i class="fa-solid fa-link"></i>
+                  아키텍처 보기
+                </a>
               </div>
             </section>
           </div>
