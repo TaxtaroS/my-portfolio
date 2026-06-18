@@ -259,9 +259,13 @@
           <button
             class="portfolio-inner"
             type="button"
+            data-smart-factory-open="true"
             data-tooltip="프로젝트 성공 사례"
           >
-            <img src="image/mock6.png" alt="Package design" />
+            <img
+              src="/projects/smart-factory/system-overview.png"
+              alt="강원형 스마트공장 시스템 구성"
+            />
             <strong>PROJECT</strong>
             <h3>Successful Project Experience</h3>
           </button>
@@ -400,6 +404,164 @@
           </button>
         </div>
         <div class="video-modal__content" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <div
+      class="smart-modal"
+      id="smart-modal"
+      aria-hidden="true"
+      role="dialog"
+      aria-labelledby="smart-modal-title"
+    >
+      <div class="smart-modal__backdrop" data-smart-factory-close="true"></div>
+      <div class="smart-modal__panel">
+        <div class="smart-modal__header">
+          <div>
+            <p>Case Study</p>
+            <h2 id="smart-modal-title">강원형 스마트공장 구축 성공사례</h2>
+          </div>
+          <button
+            type="button"
+            class="smart-modal__close"
+            data-smart-factory-close="true"
+            aria-label="프로젝트 사례 닫기"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="smart-modal__body">
+          <section class="smart-hero">
+            <div class="smart-hero__copy">
+              <span>Neo Meditech · 2023 Gangwon Smart Factory</span>
+              <h3>수기 생산 일지를 MES 기반 관리 흐름으로 전환한 제조 현장 개선 프로젝트</h3>
+              <p>
+                정형외과용 부목 생산 현장의 수기 기록, 온습도 관리, 입출고 추적
+                문제를 정리하고 MES, 클린룸, 센서, 바코드 라벨 체계를 도입해
+                대량 생산과 해외 수출 대응 기반을 만든 프로젝트입니다.
+              </p>
+            </div>
+            <img
+              src="/projects/smart-factory/system-overview.png"
+              alt="스마트공장 시스템 구성도"
+            />
+          </section>
+
+          <div class="smart-kpis" aria-label="프로젝트 핵심 지표">
+            <div>
+              <strong>2023</strong>
+              <span>강원형 스마트공장 보급확산사업</span>
+            </div>
+            <div>
+              <strong>MES</strong>
+              <span>생산 현황, 작업지시, 공정 실적 관리</span>
+            </div>
+            <div>
+              <strong>Clean Room</strong>
+              <span>온습도 센서 기반 제조 환경 관리</span>
+            </div>
+            <div>
+              <strong>Barcode</strong>
+              <span>라벨 출력과 입출고 추적 체계 도입</span>
+            </div>
+          </div>
+
+          <section class="smart-section">
+            <h3>문제 상황</h3>
+            <div class="smart-grid smart-grid--problem">
+              <article>
+                <h4>수기 기록 의존</h4>
+                <p>
+                  캐스트, 스프린트, 제품 무게와 수량을 종이 일지로 관리해 생산
+                  현황 공유와 이력 추적이 늦어지는 구조였습니다.
+                </p>
+              </article>
+              <article>
+                <h4>품질관리 인상 부족</h4>
+                <p>
+                  해외 바이어의 현장 방문이 늘어나는 상황에서 제조 환경과
+                  품질관리 체계가 한눈에 보이지 않는 문제가 있었습니다.
+                </p>
+              </article>
+              <article>
+                <h4>대량 생산 대응 필요</h4>
+                <p>
+                  해외 수출 계약과 생산량 증가에 맞춰 리드타임 단축, 불량률
+                  감소, 공정 자동화 기반이 필요했습니다.
+                </p>
+              </article>
+            </div>
+          </section>
+
+          <section class="smart-section">
+            <h3>내 역할과 실행</h3>
+            <div class="smart-timeline">
+              <div>
+                <span>01</span>
+                <p>기존 공정일지, 수량 기록, 현장 관리 흐름을 정리해 개선 포인트를 도출했습니다.</p>
+              </div>
+              <div>
+                <span>02</span>
+                <p>MES, 클린룸, 온습도 센서, 바코드 라벨기 도입 목적과 현장 적용 범위를 구체화했습니다.</p>
+              </div>
+              <div>
+                <span>03</span>
+                <p>생산관리, 입출고, 품질관리, 현장 모니터링이 이어지는 시스템 구성안을 사업 자료로 정리했습니다.</p>
+              </div>
+              <div>
+                <span>04</span>
+                <p>해외 바이어 대응과 대량 생산 준비 관점에서 사업효과와 기대성과를 설득 가능한 형태로 구성했습니다.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="smart-section smart-evidence">
+            <div class="smart-section__title">
+              <h3>증거 자료</h3>
+              <p>프로젝트 기획서에 포함된 실제 공정 자료와 시스템 구성 이미지입니다.</p>
+            </div>
+            <div class="smart-gallery">
+              <figure>
+                <img
+                  src="/projects/smart-factory/manual-log-cast.jpeg"
+                  alt="기존 수기 캐스트 공정 일지"
+                />
+                <figcaption>Before · 수기 공정 일지</figcaption>
+              </figure>
+              <figure>
+                <img
+                  src="/projects/smart-factory/process-goals.png"
+                  alt="공정별 스마트 시스템 적용 목표"
+                />
+                <figcaption>Plan · 공정별 적용 목표</figcaption>
+              </figure>
+              <figure>
+                <img
+                  src="/projects/smart-factory/solution-functions.png"
+                  alt="스마트공장 솔루션 기능 구성"
+                />
+                <figcaption>System · 솔루션 기능 구성</figcaption>
+              </figure>
+              <figure>
+                <img
+                  src="/projects/smart-factory/project-meeting.jpeg"
+                  alt="스마트공장 프로젝트 관계자 미팅"
+                />
+                <figcaption>Field · 프로젝트 협의</figcaption>
+              </figure>
+            </div>
+          </section>
+
+          <section class="smart-section smart-result">
+            <h3>성과로 말할 수 있는 점</h3>
+            <ul>
+              <li>수기 중심 생산 기록을 디지털 관리 흐름으로 전환하는 기반을 만들었습니다.</li>
+              <li>온습도와 클린룸 관리로 정형외과용 부목 생산의 환경 관리 수준을 높였습니다.</li>
+              <li>바코드 라벨과 MES를 통해 생산, 입출고, 품질 이력을 연결할 수 있는 구조를 설계했습니다.</li>
+              <li>해외 바이어와 대량 수출 대응에 필요한 제조 신뢰도와 설명 가능한 공정 체계를 강화했습니다.</li>
+            </ul>
+          </section>
+        </div>
       </div>
     </div>
 

@@ -138,8 +138,51 @@ function setupCertModal() {
   });
 }
 
+function setupSmartFactoryModal() {
+  const modal = document.querySelector<HTMLElement>("#smart-modal");
+  const openButton = document.querySelector<HTMLElement>(
+    "[data-smart-factory-open='true']",
+  );
+  const closeButtons =
+    modal?.querySelectorAll<HTMLElement>("[data-smart-factory-close='true']") ??
+    [];
+  if (!modal || !openButton) return;
+
+  const openModal = () => {
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("smart-modal-open");
+  };
+
+  const closeModal = () => {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("smart-modal-open");
+  };
+
+  openButton.addEventListener("click", openModal);
+  closeButtons.forEach((button) => button.addEventListener("click", closeModal));
+
+  modal.addEventListener("click", (event) => {
+    const target = event.target as HTMLElement;
+    if (
+      target.dataset.smartFactoryClose === "true" ||
+      target.closest("[data-smart-factory-close]")
+    ) {
+      closeModal();
+    }
+  });
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modal.classList.contains("is-open")) {
+      closeModal();
+    }
+  });
+}
+
 export function setupPortfolioModals() {
   setupResumeModal();
   setupVideoModal();
   setupCertModal();
+  setupSmartFactoryModal();
 }
