@@ -573,6 +573,12 @@ section.contact .contact-me .right button {
     width: 100%; /* 48% -> 100% */
     margin-right: 0; /* margin 초기화 */
   }
+
+  .bg {
+    height: 540px;
+    background-position: 72% center;
+    background-attachment: scroll;
+  }
 }
 
 @media (max-width: 576px) {
@@ -613,6 +619,11 @@ section.contact .contact-me .right button {
     font-size: 1.08rem;
   }
 
+  .bg {
+    height: 560px;
+    background-position: 76% center;
+  }
+
   section .container {
     width: 360px; /* 400px -> 360px */
   }
@@ -628,6 +639,10 @@ section.contact .contact-me .right button {
 
   main h4 {
     font-size: 1.5rem;
+  }
+  .bg {
+    height: 500px;
+    background-position: 78% center;
   }
   section .container {
     width: 320px; /* 360px -> 320px */
