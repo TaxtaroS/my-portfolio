@@ -194,7 +194,39 @@ function setupSmartFactoryModal() {
     [];
   if (!modal || !openButton) return;
 
+  const caseList = modal.querySelector<HTMLElement>("[data-smart-case-list]");
+  const detailViews = modal.querySelectorAll<HTMLElement>("[data-smart-case-detail]");
+  const caseButtons = modal.querySelectorAll<HTMLElement>("[data-smart-case-target]");
+  const backButtons = modal.querySelectorAll<HTMLElement>("[data-smart-case-back]");
+  const modalTitle = modal.querySelector<HTMLElement>("#smart-modal-title");
+
+  const showCaseList = () => {
+    if (caseList) caseList.hidden = false;
+    detailViews.forEach((view) => {
+      view.hidden = true;
+    });
+    if (modalTitle) modalTitle.textContent = "프로젝트 성공사례";
+    modal.querySelector<HTMLElement>(".smart-modal__body")?.scrollTo({ top: 0 });
+  };
+
+  const showCaseDetail = (caseId?: string) => {
+    if (!caseId) return;
+    if (caseList) caseList.hidden = true;
+    detailViews.forEach((view) => {
+      const isTarget = view.dataset.smartCaseDetail === caseId;
+      view.hidden = !isTarget;
+      if (isTarget && modalTitle) {
+        modalTitle.textContent =
+          caseId === "owpml-summary"
+            ? "OWPML 문서 요약 웹"
+            : "강원형 스마트공장 구축 성공사례";
+      }
+    });
+    modal.querySelector<HTMLElement>(".smart-modal__body")?.scrollTo({ top: 0 });
+  };
+
   const openModal = () => {
+    showCaseList();
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
     document.body.classList.add("smart-modal-open");
@@ -204,10 +236,15 @@ function setupSmartFactoryModal() {
     modal.classList.remove("is-open");
     modal.setAttribute("aria-hidden", "true");
     document.body.classList.remove("smart-modal-open");
+    showCaseList();
   };
 
   openButton.addEventListener("click", openModal);
   closeButtons.forEach((button) => button.addEventListener("click", closeModal));
+  caseButtons.forEach((button) => {
+    button.addEventListener("click", () => showCaseDetail(button.dataset.smartCaseTarget));
+  });
+  backButtons.forEach((button) => button.addEventListener("click", showCaseList));
 
   modal.addEventListener("click", (event) => {
     const target = event.target as HTMLElement;
