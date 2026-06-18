@@ -138,6 +138,47 @@ function setupCertModal() {
   });
 }
 
+function setupAiStudyModal() {
+  const modal = document.querySelector<HTMLElement>("#ai-study-modal");
+  const openButton = document.querySelector<HTMLElement>(
+    "[data-ai-study-open='true']",
+  );
+  const closeButtons =
+    modal?.querySelectorAll<HTMLElement>("[data-ai-study-close='true']") ?? [];
+  if (!modal || !openButton) return;
+
+  const openModal = () => {
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("ai-study-modal-open");
+  };
+
+  const closeModal = () => {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("ai-study-modal-open");
+  };
+
+  openButton.addEventListener("click", openModal);
+  closeButtons.forEach((button) => button.addEventListener("click", closeModal));
+
+  modal.addEventListener("click", (event) => {
+    const target = event.target as HTMLElement;
+    if (
+      target.dataset.aiStudyClose === "true" ||
+      target.closest("[data-ai-study-close]")
+    ) {
+      closeModal();
+    }
+  });
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modal.classList.contains("is-open")) {
+      closeModal();
+    }
+  });
+}
+
 function setupSmartFactoryModal() {
   const modal = document.querySelector<HTMLElement>("#smart-modal");
   const openButton = document.querySelector<HTMLElement>(
@@ -184,5 +225,6 @@ export function setupPortfolioModals() {
   setupResumeModal();
   setupVideoModal();
   setupCertModal();
+  setupAiStudyModal();
   setupSmartFactoryModal();
 }

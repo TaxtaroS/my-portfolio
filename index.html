@@ -219,13 +219,12 @@
           <button
             class="portfolio-inner"
             type="button"
-            data-video="https://youtu.be/Sc2-2z0TjoU"
-            data-poster="/image/mock2.png"
-            data-tooltip="AI 학습 영상"
+            data-ai-study-open="true"
+            data-tooltip="AI 개발자 과정 학습 프로파일"
           >
             <img src="image/mock2.png" alt="Tablet app" />
             <strong>AI STUDY</strong>
-            <h3>AI Study Portfolio</h3>
+            <h3>AI Developer Study</h3>
           </button>
           <button
             class="portfolio-inner"
@@ -404,6 +403,213 @@
           </button>
         </div>
         <div class="video-modal__content" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <div
+      class="ai-study-modal"
+      id="ai-study-modal"
+      aria-hidden="true"
+      role="dialog"
+      aria-labelledby="ai-study-modal-title"
+    >
+      <div class="ai-study-modal__backdrop" data-ai-study-close="true"></div>
+      <div class="ai-study-modal__panel">
+        <div class="ai-study-modal__header">
+          <div>
+            <p>Hancom AI Academy · AI Developer Course 4th</p>
+            <h2 id="ai-study-modal-title">AI 개발자 과정 학습 프로파일</h2>
+          </div>
+          <button
+            type="button"
+            class="ai-study-modal__close"
+            data-ai-study-close="true"
+            aria-label="AI 스터디 프로파일 닫기"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="ai-study-modal__body">
+          <article class="study-post">
+            <header class="study-post__hero">
+              <span>Study Log</span>
+              <h3>현장 경험 위에 웹, 데이터, AI를 쌓아 올리는 중입니다.</h3>
+              <p>
+                한컴 AI 아카데미 AI 개발자 과정 4기에서 웹 프론트엔드,
+                백엔드, 데이터베이스, 클라우드, 데이터 분석, 딥러닝, 자연어
+                처리를 교재 기반으로 학습했습니다. 단순히 문법을 외우는 것이
+                아니라, 제조 현장에서 본 문제를 웹 서비스와 AI 기능으로
+                연결하는 개발자가 되는 것을 목표로 공부하고 있습니다.
+              </p>
+            </header>
+
+            <section class="study-capability">
+              <h3>이 과정을 통해 할 수 있는 것</h3>
+              <div class="study-capability__grid">
+                <div>
+                  <strong>Web UI</strong>
+                  <p>HTML/CSS/JavaScript와 React로 반응형 화면과 인터랙션을 구현합니다.</p>
+                </div>
+                <div>
+                  <strong>API Server</strong>
+                  <p>Node.js와 FastAPI 기반으로 REST API, 라우팅, 데이터 흐름을 설계합니다.</p>
+                </div>
+                <div>
+                  <strong>Data & DB</strong>
+                  <p>SQL, 데이터 모델링, pandas 기반 전처리와 분석 흐름을 이해합니다.</p>
+                </div>
+                <div>
+                  <strong>AI Foundation</strong>
+                  <p>머신러닝, 딥러닝, 자연어 처리의 기본 원리를 코드와 실습으로 익혔습니다.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="study-video-note">
+              <div>
+                <h3>AI Study Video</h3>
+                <p>
+                  학습 과정과 실습 기록은 영상과 블로그로 정리하고 있습니다.
+                  배운 내용을 다시 설명할 수 있을 때 진짜 내 것이 된다고
+                  생각합니다.
+                </p>
+              </div>
+              <a
+                href="https://youtu.be/Sc2-2z0TjoU"
+                target="_blank"
+                rel="noreferrer"
+              >
+                영상 보기
+              </a>
+            </section>
+
+            <section class="study-books">
+              <div class="study-section-title">
+                <h3>교재 기반 학습 기록</h3>
+                <p>각 교재에서 익힌 핵심과 포트폴리오에 연결한 역량입니다.</p>
+              </div>
+              <div class="study-book-grid">
+                <article class="study-book-card">
+                  <img src="/study/books/html-css-js.jpg" alt="코딩 자율학습 HTML CSS 자바스크립트 표지" />
+                  <div>
+                    <span>html/css · 2022.04.25</span>
+                    <h4>코딩 자율학습 HTML + CSS + 자바스크립트</h4>
+                    <p>웹 문서 구조, 스타일링, 기본 인터랙션을 익히고 현재 포트폴리오의 한 페이지 구성으로 연결했습니다.</p>
+                    <strong>할 수 있는 것: 정적 페이지 구현, 반응형 레이아웃, DOM 이벤트 처리</strong>
+                  </div>
+                </article>
+                <article class="study-book-card">
+                  <img src="/study/books/js-deep-dive.jpg" alt="모던 자바스크립트 Deep Dive 표지" />
+                  <div>
+                    <span>자바스크립트/타입스크립트 · 2020.09.25</span>
+                    <h4>모던 자바스크립트 Deep Dive</h4>
+                    <p>스코프, 실행 컨텍스트, 프로토타입, 비동기 처리처럼 자바스크립트가 동작하는 원리를 학습했습니다.</p>
+                    <strong>할 수 있는 것: JS 코드 흐름 분석, 비동기 로직 이해, 오류 원인 추적</strong>
+                  </div>
+                </article>
+                <article class="study-book-card">
+                  <img src="/study/books/react-art.jpg" alt="리액트를 다루는 기술 표지" />
+                  <div>
+                    <span>리액트JS · 2019.08.31</span>
+                    <h4>리액트를 다루는 기술</h4>
+                    <p>컴포넌트, Hooks, 상태 관리, 라우팅, API 연동의 흐름을 익히며 프론트엔드 구조를 이해했습니다.</p>
+                    <strong>할 수 있는 것: 컴포넌트 분리, 상태 기반 UI, API 연동 화면 구성</strong>
+                  </div>
+                </article>
+                <article class="study-book-card">
+                  <img src="/study/books/react-native.jpg" alt="처음 배우는 리액트 네이티브 표지" />
+                  <div>
+                    <span>리액트 모바일 · 2021.02.01</span>
+                    <h4>처음 배우는 리액트 네이티브</h4>
+                    <p>Expo, 모바일 컴포넌트, 내비게이션, 앱 화면 구성 방식을 학습했습니다.</p>
+                    <strong>할 수 있는 것: 기본 모바일 화면 구성, 탭/스택 내비게이션 이해</strong>
+                  </div>
+                </article>
+                <article class="study-book-card">
+                  <img src="/study/books/node-patterns.jpg" alt="Node.js 디자인 패턴 표지" />
+                  <div>
+                    <span>노드JS · 2018.10.20</span>
+                    <h4>Node.js 디자인 패턴</h4>
+                    <p>모듈, 비동기 제어, 스트림, 서버 설계 패턴을 통해 백엔드 구조화 관점을 익혔습니다.</p>
+                    <strong>할 수 있는 것: Node 서버 구조 이해, 비동기 흐름 설계, 모듈 분리</strong>
+                  </div>
+                </article>
+                <article class="study-book-card">
+                  <img src="/study/books/database-system.jpg" alt="데이터베이스 시스템 표지" />
+                  <div>
+                    <span>데이터베이스 · 2021.08.05</span>
+                    <h4>데이터베이스 시스템</h4>
+                    <p>관계형 모델, SQL, 정규화, 트랜잭션, 인덱스와 질의 처리의 기본을 학습했습니다.</p>
+                    <strong>할 수 있는 것: 테이블 설계, SQL 작성, 데이터 일관성 관점 이해</strong>
+                  </div>
+                </article>
+                <article class="study-book-card">
+                  <img src="/study/books/cloud-computing.jpg" alt="모두를 위한 클라우드 컴퓨팅 표지" />
+                  <div>
+                    <span>클라우드서비스 · 2022.08.26</span>
+                    <h4>모두를 위한 클라우드 컴퓨팅</h4>
+                    <p>가상화, 컨테이너, 도커, 쿠버네티스, CI/CD, AWS 개념을 실습 중심으로 익혔습니다.</p>
+                    <strong>할 수 있는 것: 배포 환경 이해, 컨테이너와 클라우드 구조 설명</strong>
+                  </div>
+                </article>
+                <article class="study-book-card">
+                  <img src="/study/books/jump-to-python.jpg" alt="Do it 점프 투 파이썬 표지" />
+                  <div>
+                    <span>AIaaS 개발 프로젝트 · 2023.06.15</span>
+                    <h4>Do it! 점프 투 파이썬</h4>
+                    <p>파이썬 문법, 자료형, 함수, 모듈, 파일 처리의 기본기를 프로젝트 학습의 기반으로 삼았습니다.</p>
+                    <strong>할 수 있는 것: 파이썬 스크립트 작성, 데이터 처리 기초, 자동화 코드 작성</strong>
+                  </div>
+                </article>
+                <article class="study-book-card">
+                  <img src="/study/books/python-data-analysis.jpg" alt="파이썬 라이브러리를 활용한 데이터 분석 표지" />
+                  <div>
+                    <span>파이썬 데이터분석 · 2013.10.01</span>
+                    <h4>파이썬 라이브러리를 활용한 데이터 분석</h4>
+                    <p>NumPy, pandas, matplotlib, Jupyter를 활용한 데이터 정제와 분석 흐름을 학습했습니다.</p>
+                    <strong>할 수 있는 것: pandas 전처리, 기초 시각화, 분석용 데이터 정리</strong>
+                  </div>
+                </article>
+                <article class="study-book-card">
+                  <img src="/study/books/fastapi-python.jpg" alt="FastAPI를 사용한 파이썬 웹 개발 표지" />
+                  <div>
+                    <span>fast api 웹 서버 · 2023.03.22</span>
+                    <h4>FastAPI를 사용한 파이썬 웹 개발</h4>
+                    <p>라우팅, 응답 모델, DB 연결, 인증, 테스트, 도커 배포까지 API 서버 개발 흐름을 익혔습니다.</p>
+                    <strong>할 수 있는 것: FastAPI REST API 작성, 데이터 모델링, 간단한 서버 배포 흐름 이해</strong>
+                  </div>
+                </article>
+                <article class="study-book-card">
+                  <img src="/study/books/deep-learning-everyone.jpg" alt="모두의 딥러닝 표지" />
+                  <div>
+                    <span>머신러닝/딥러닝 기초 · 2017.12.27</span>
+                    <h4>모두의 딥러닝</h4>
+                    <p>머신러닝과 딥러닝의 기본 개념, 신경망, 분류/예측 문제를 입문자 관점에서 학습했습니다.</p>
+                    <strong>할 수 있는 것: AI 모델 학습 흐름 설명, 기본 분류/예측 문제 이해</strong>
+                  </div>
+                </article>
+                <article class="study-book-card">
+                  <img src="/study/books/hands-on-deep-learning.jpg" alt="실체가 손에 잡히는 딥러닝 표지" />
+                  <div>
+                    <span>딥러닝 활용 영상 · 2019.06.18</span>
+                    <h4>실체가 손에 잡히는 딥러닝</h4>
+                    <p>신경망, 역전파, CNN을 수식과 코드로 따라가며 딥러닝 내부 동작을 이해했습니다.</p>
+                    <strong>할 수 있는 것: 역전파 개념 설명, CNN 구조 이해, 코드 기반 딥러닝 실습</strong>
+                  </div>
+                </article>
+                <article class="study-book-card">
+                  <img src="/study/books/nlp-deep-learning.jpg" alt="자연어 처리와 딥러닝 표지" />
+                  <div>
+                    <span>딥러닝 활용 자연어 · 2021.01.29</span>
+                    <h4>자연어 처리와 딥러닝</h4>
+                    <p>텍스트를 벡터로 표현하고, 딥러닝 기반으로 언어를 분석·이해하는 기본 흐름을 학습했습니다.</p>
+                    <strong>할 수 있는 것: NLP 기본 개념 설명, 텍스트 전처리와 임베딩 흐름 이해</strong>
+                  </div>
+                </article>
+              </div>
+            </section>
+          </article>
+        </div>
       </div>
     </div>
 
