@@ -1,3 +1,5 @@
+import { renderAiStudyBooks } from "./aiStudyBooks";
+
 function setupResumeModal() {
   const modal = document.querySelector<HTMLElement>("#resume-modal");
   const openButton = document.querySelector<HTMLElement>("[data-resume-open='true']");
@@ -146,6 +148,9 @@ function setupAiStudyModal() {
   const closeButtons =
     modal?.querySelectorAll<HTMLElement>("[data-ai-study-close='true']") ?? [];
   if (!modal || !openButton) return;
+
+  const bookGrid = modal.querySelector<HTMLElement>("[data-study-books]");
+  if (bookGrid) renderAiStudyBooks(bookGrid);
 
   const openModal = () => {
     modal.classList.add("is-open");
