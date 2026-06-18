@@ -249,11 +249,12 @@
           <button
             class="portfolio-inner"
             type="button"
+            data-field-story-open="true"
             data-tooltip="현장 근무 경험"
           >
             <img src="image/mock5.png" alt="Netflix clone" />
             <strong>FIELD WORK</strong>
-            <h3>Medical Device Factory Work</h3>
+            <h3>손으로 고치던 사람, 이제 코드로 고칩니다</h3>
           </button>
           <button
             class="portfolio-inner"
@@ -842,6 +843,105 @@
               </div>
             </section>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="field-story-modal"
+      id="field-story-modal"
+      aria-hidden="true"
+      role="dialog"
+      aria-labelledby="field-story-modal-title"
+    >
+      <div class="field-story-modal__backdrop" data-field-story-close="true"></div>
+      <div class="field-story-modal__panel">
+        <div class="field-story-modal__header">
+          <div>
+            <p>Autobiography Essay</p>
+            <h2 id="field-story-modal-title">손으로 고치던 사람, 이제 코드로 고칩니다</h2>
+          </div>
+          <button
+            type="button"
+            class="field-story-modal__close"
+            data-field-story-close="true"
+            aria-label="현장 근무 경험 닫기"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="field-story-modal__body">
+          <article class="field-story">
+            <section class="field-story__hero">
+              <span>Field Work · Life Story</span>
+              <h3>프롤로그 · 오래된 꿈</h3>
+              <p>
+                군대에 가기 전, 저는 동생들과 “우리들만의 리니지”를 꿈꾸던
+                시절이 있었습니다. 누군가는 기획을 하고, 누군가는 그림을
+                그리고, 누군가는 이미지를 만들며 게임을 이야기했습니다. 저도
+                막연히 게임 개발자를 꿈꿨습니다. 하지만 그때의 저는 꿈보다
+                생계를 먼저 바라봐야 했고, 결국 다른 길로 걸어갔습니다.
+              </p>
+            </section>
+
+            <section class="field-story__chapter">
+              <h3>1장 · 현장에서 배운 트러블슈팅</h3>
+              <p>
+                그 길이 완전히 돌아가는 길이었다고 생각하지는 않습니다. 건설
+                현장과 태양광 회사, 의료기기 제조 현장에서 저는 문제를 몸으로
+                배웠습니다. 설비가 멈추면 어디서부터 봐야 하는지, 문서가
+                흩어지면 어떻게 정리해야 하는지, 사람이 바뀌어도 일이 이어지려면
+                어떤 기록이 필요한지 배웠습니다. 특히 스마트공장 구축 경험은
+                제게 큰 전환점이었습니다. 하드웨어가 좋아지는 것만으로는
+                충분하지 않았고, 현장을 이해하지 못한 소프트웨어는 결국 사람에게
+                쓰이지 못한다는 사실을 보았습니다.
+              </p>
+              <p>
+                개발을 배우며 저는 다시 같은 즐거움을 느끼고 있습니다.
+                애플리케이션을 만들다 보면 수많은 에러를 만납니다. 처음에는
+                막막하지만, 에러 메시지를 읽고 원인을 좁히고 조치를 취해
+                해결하는 과정이 점점 재미있어졌습니다. 수업 중 모델 서빙을 특히
+                재미있게 느꼈고, API와 모니터링에도 자연스럽게 관심이 생겼습니다.
+                사용자의 요청에 빠르게 반응하고, 문제가 생기면 원인을 찾아 다시
+                살리는 일. 어쩌면 저는 오래전부터 트러블슈팅을 좋아하는
+                사람이었는지도 모릅니다.
+              </p>
+            </section>
+
+            <section class="field-story__chapter">
+              <h3>2장 · 기록하는 사람</h3>
+              <p>
+                저는 기록하는 일도 좋아합니다. 태양광 회사에서 공사 문서와 CAD
+                자료를 정리하고 후임에게 알려주던 경험이 있습니다. 그때는 단순한
+                업무 정리라고 생각했지만, 지금 돌아보면 그것은 지식을
+                아카이빙하는 일이었습니다. 공부를 하면서도 매일의 기록이 쌓이면
+                언젠가 누군가에게 도움이 되는 지도가 될 수 있다고 믿게
+                되었습니다.
+              </p>
+            </section>
+
+            <section class="field-story__chapter">
+              <h3>3장 · AI를 만난 현재</h3>
+              <p>
+                한컴 AI 아카데미에서 저는 다시 배우고 있습니다. API를 살펴보고,
+                텍스트를 이미지로 바꾸고, 이미지를 영상으로 확장하는 도구들을
+                실험하고, 모델의 정확도가 올라가는 순간을 보며 뿌듯함을
+                느낍니다. 코드를 짜는 시간은 어렵고 오래 걸리지만, 제 생각이
+                조금씩 작동하는 형태로 바뀌는 과정은 여전히 설렙니다.
+              </p>
+            </section>
+
+            <section class="field-story__chapter field-story__ending">
+              <h3>에필로그 · 다시 도전하는 사람</h3>
+              <p>
+                저는 아직 꿈을 버리지 않았습니다. 늦었다고 생각한 적도 많지만,
+                7전 8기의 마음으로 다시 도전하고 있습니다. 예전에는 손으로
+                고치고 몸으로 버텼다면, 이제는 코드로 문제를 고치고 싶습니다.
+                현장을 아는 개발자, 기록하는 개발자, 문제를 끝까지 따라가는
+                엔지니어. 그것이 제가 지금 만들어가고 싶은 저의 다음 모습입니다.
+              </p>
+            </section>
+          </article>
         </div>
       </div>
     </div>

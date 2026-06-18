@@ -919,6 +919,135 @@ body.cert-modal-open {
   overflow: hidden;
 }
 
+/* field story essay modal */
+.field-story-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 124;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.field-story-modal.is-open {
+  display: flex;
+}
+.field-story-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(8, 18, 13, 0.76);
+}
+.field-story-modal__panel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: min(980px, 94vw);
+  height: min(90vh, 900px);
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: #fffdf8;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.36);
+}
+.field-story-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 18px 22px;
+  border-bottom: 1px solid #e2dccd;
+  background-color: #f7f4eb;
+}
+.field-story-modal__header p {
+  margin: 0 0 4px;
+  color: #7a5a00;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.field-story-modal__header h2 {
+  margin: 0;
+  color: #103d2f;
+  font-size: 1.42rem;
+  line-height: 1.35;
+  word-break: keep-all;
+}
+.field-story-modal__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background-color: #ebe5d6;
+  color: #10261d;
+  cursor: pointer;
+}
+.field-story-modal__close:hover {
+  background-color: #14532d;
+  color: #ffffff;
+}
+.field-story-modal__body {
+  overflow-y: auto;
+  padding: 28px;
+  color: #1f2c25;
+}
+body.field-story-modal-open {
+  overflow: hidden;
+}
+.field-story {
+  max-width: 820px;
+  margin: 0 auto;
+}
+.field-story section {
+  padding: 0;
+  background-color: transparent;
+}
+.field-story__hero,
+.field-story__chapter {
+  border-left: 4px solid #14532d;
+  padding: 22px 0 24px 24px;
+}
+.field-story__hero {
+  border: 1px solid #e2dccd;
+  border-left: 4px solid #14532d;
+  padding: 26px;
+  background: linear-gradient(135deg, #fbf8ef, #ffffff);
+}
+.field-story__hero span {
+  display: block;
+  margin-bottom: 10px;
+  color: #7a5a00;
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+.field-story h3 {
+  margin: 0 0 14px;
+  color: #0f3d2e;
+  font-size: 1.65rem;
+  line-height: 1.38;
+  word-break: keep-all;
+}
+.field-story p {
+  margin: 0 0 14px;
+  color: #314139;
+  font-size: 1.03rem;
+  line-height: 1.95;
+  word-break: keep-all;
+}
+.field-story p:last-child {
+  margin-bottom: 0;
+}
+.field-story__chapter {
+  margin-top: 20px;
+}
+.field-story__ending {
+  margin-bottom: 8px;
+  background-color: #f7fbf8;
+}
+
 /* AI study profile modal */
 .ai-study-modal {
   position: fixed;
@@ -1521,6 +1650,32 @@ body.smart-modal-open {
   }
   .smart-modal__panel {
     height: 92vh;
+  }
+  .field-story-modal {
+    padding: 10px;
+  }
+  .field-story-modal__panel {
+    height: 92vh;
+  }
+  .field-story-modal__header h2 {
+    font-size: 1.06rem;
+  }
+  .field-story-modal__body {
+    padding: 18px;
+  }
+  .field-story__hero {
+    padding: 18px;
+  }
+  .field-story__chapter {
+    border-left-width: 3px;
+    padding: 18px 0 20px 14px;
+  }
+  .field-story h3 {
+    font-size: 1.35rem;
+  }
+  .field-story p {
+    font-size: 0.98rem;
+    line-height: 1.9;
   }
   .ai-study-modal {
     padding: 10px;
