@@ -106,6 +106,48 @@ function setupPortfolioLinks() {
   });
 }
 
+function openPortfolioCase(caseId: string) {
+  moveToSection("#portfolio");
+  window.setTimeout(() => {
+    document
+      .querySelector<HTMLButtonElement>("[data-smart-factory-open='true']")
+      ?.click();
+
+    window.setTimeout(() => {
+      document
+        .querySelector<HTMLButtonElement>(
+          `[data-smart-case-target='${caseId}']`,
+        )
+        ?.click();
+    }, 80);
+  }, 450);
+}
+
+function setupFeatureCards() {
+  const caseButtons =
+    document.querySelectorAll<HTMLButtonElement>("[data-feature-open-case]");
+  const resumeButtons =
+    document.querySelectorAll<HTMLButtonElement>("[data-feature-open-resume]");
+
+  caseButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const caseId = button.dataset.featureOpenCase;
+      if (caseId) openPortfolioCase(caseId);
+    });
+  });
+
+  resumeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      moveToSection("#portfolio");
+      window.setTimeout(() => {
+        document
+          .querySelector<HTMLButtonElement>("[data-resume-open='true']")
+          ?.click();
+      }, 450);
+    });
+  });
+}
+
 function setupInlineLinkButtons() {
   const linkButtons =
     document.querySelectorAll<HTMLButtonElement>(".add-link-btn");
@@ -288,6 +330,7 @@ startTypingEffect();
 setupHeaderScroll();
 setupSmoothScroll();
 setupPortfolioLinks();
+setupFeatureCards();
 setupInlineLinkButtons();
 setupContactForm();
 setupPortfolioModals();
