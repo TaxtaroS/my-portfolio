@@ -260,7 +260,7 @@ function setupSmartFactoryModal() {
       if (isTarget && modalTitle) {
         modalTitle.textContent =
           caseId === "owpml-summary"
-            ? "OWPML 문서 요약 웹"
+            ? "OWPML 한글 문서 챗봇"
             : "강원형 스마트공장 구축 성공사례";
       }
     });

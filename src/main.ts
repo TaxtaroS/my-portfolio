@@ -82,6 +82,14 @@ function setupSmoothScroll() {
     element.addEventListener("click", () => {
       const target = element.dataset.target;
       if (target) moveToSection(target);
+
+      if (element.dataset.openSuccessCase === "true") {
+        window.setTimeout(() => {
+          document
+            .querySelector<HTMLButtonElement>("[data-smart-factory-open='true']")
+            ?.click();
+        }, 450);
+      }
     });
   });
 }

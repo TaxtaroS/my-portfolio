@@ -64,9 +64,10 @@
         <button
           class="download"
           data-animation-scroll="true"
-          data-target="#about"
+          data-target="#portfolio"
+          data-open-success-case="true"
         >
-          Get Started
+          성공사례 보기
         </button>
         <button
           class="mouse"
@@ -520,8 +521,8 @@
               <button type="button" class="smart-case-card" data-smart-case-target="owpml-summary">
                 <img src="/projects/papermate/hero.png" alt="PaperMate OWPML 문서 요약 웹 프로젝트" />
                 <span>Success Case 02</span>
-                <strong>OWPML 문서 요약 웹</strong>
-                <p>한컴 AI 아카데미에서 진행 중인 문서 분석·요약 웹 서비스 프로젝트입니다.</p>
+                <strong>OWPML 한글 문서 챗봇</strong>
+                <p>한컴 AI 아카데미에서 수행한 문서 분석, 질의응답, 비교 서비스 프로젝트입니다.</p>
               </button>
             </div>
           </div>
@@ -704,15 +705,14 @@
             </button>
             <section class="smart-hero smart-hero--owpml">
               <div class="smart-hero__copy">
-                <span>Hancom AI Academy · AI Developer Course 4th</span>
-                <h3>PaperMate · OWPML 기반 문서 질의응답 서비스</h3>
+                <span>Hancom AI Academy · 2025.12.29 - 2026.06.29</span>
+                <h3>OWPML을 활용한 한글 문서 챗봇</h3>
                 <p>
-                  PDF, HWP/HWPX, DOCX, TXT, 이미지 문서를 업로드하면 AI가
-                  내용을 요약하고 문서 근거 기반으로 질문에 답변하며, 분석
-                  결과를 표·그래프·이미지형 시각화와 프로젝트 공유 흐름으로
-                  연결하는 웹 서비스입니다. 한컴 AI 아카데미 팀 프로젝트에서
-                  백엔드 API, 문서 분석, 시각화, 프로젝트 저장 흐름을 중심으로
-                  정리했습니다.
+                  HWP/HWPX 문서를 파싱해 텍스트를 정규화하고, 사용자가 문서
+                  내용을 질문하거나 비교할 수 있도록 만든 팀 프로젝트입니다.
+                  저는 프론트엔드와 백엔드, AI 분석 결과가 만나는 지점에서
+                  파이프라인 오류, PDF 변환, 인증, 문서 비교 예외 처리를
+                  중심으로 개선했습니다.
                 </p>
               </div>
               <img src="/projects/papermate/hero.png" alt="PaperMate OWPML 문서 요약 웹 프로젝트 대표 이미지" />
@@ -720,115 +720,117 @@
 
             <div class="smart-kpis" aria-label="OWPML 프로젝트 핵심 지표">
               <div>
-                <strong>OWPML</strong>
-                <span>HWP/HWPX 문서 구조 분석과 텍스트 추출</span>
+                <strong>Role</strong>
+                <span>분석 결과 연결부, 문서 정규화, 배포 인증 문제 해결</span>
               </div>
               <div>
-                <strong>Q&A</strong>
-                <span>요약, 키워드, 근거 기반 질의응답</span>
+                <strong>Stack</strong>
+                <span>React, Vite, TypeScript, FastAPI, Python, MongoDB</span>
               </div>
               <div>
-                <strong>Visual</strong>
-                <span>표, 그래프, 이미지, 마인드맵 생성</span>
+                <strong>Deploy</strong>
+                <span>AWS EC2, Vercel, Docker, GitHub 기반 배포 흐름 경험</span>
               </div>
               <div>
-                <strong>Share</strong>
-                <span>프로젝트 저장과 초대 코드 기반 공유</span>
+                <strong>Result</strong>
+                <span>핵심 오류 3건 해결, 문서 유사도 비교는 부분 개선</span>
               </div>
             </div>
 
             <section class="smart-section">
-              <h3>Situation · 상황</h3>
+              <h3>Situation · 내가 마주한 문제</h3>
               <div class="smart-grid">
                 <article>
-                  <h4>문서 확인 시간의 부담</h4>
+                  <h4>분석 결과 전환 오류</h4>
                   <p>
-                    긴 업무 문서나 교육 자료는 전체 내용을 읽기 전까지 핵심을
-                    파악하기 어렵습니다. 문서 구조를 활용해 요약 흐름을 만들면
-                    사용자의 탐색 시간을 줄일 수 있다고 판단했습니다.
+                    LLM 분석 결과가 생성되었지만 중간 grounding 단계에서
+                    걸리면서 화면에는 로컬 분석 결과가 표시되는 문제가
+                    있었습니다. 사용자가 기대한 결과와 실제 표시 결과가
+                    달라지는 지점을 추적했습니다.
                   </p>
                 </article>
                 <article>
-                  <h4>다양한 문서 포맷 활용</h4>
+                  <h4>PDF 재구성 노이즈</h4>
                   <p>
-                    HWP/HWPX뿐 아니라 PDF, DOCX, TXT, 이미지까지 분석
-                    대상으로 확장해야 했고, 문서별 추출 결과를 같은 분석
-                    파이프라인으로 연결해야 했습니다.
+                    HWP/HWPX를 파싱하고 정규화한 뒤 PDF로 다시 만드는 과정에서
+                    불용어, 이미지, 표 데이터가 함께 노출되었습니다. 비교 화면에
+                    보여줄 텍스트와 보관할 OCR 데이터를 분리할 필요가 있었습니다.
                   </p>
                 </article>
                 <article>
-                  <h4>AI 학습의 프로젝트화</h4>
+                  <h4>배포와 비교 기능 오류</h4>
                   <p>
-                    단순 모델 호출이 아니라 업로드, 미리보기, 답변, 시각화,
-                    프로젝트 저장, 공유방 협업까지 사용자가 체감할 수 있는
-                    서비스 흐름으로 만드는 데 초점을 두었습니다.
+                    EC2 배포 후 로그인 해시 문제가 발생했고, 문서 비교에서는
+                    로컬 방식만으로 유사도를 안정적으로 계산하지 못했습니다.
+                    기능이 실패할 때 사용자에게 어떤 상태를 보여줄지도 함께
+                    고민했습니다.
                   </p>
                 </article>
               </div>
             </section>
 
             <section class="smart-section">
-              <h3>Architecture · 전체 구조</h3>
+              <h3>Tech · 왜 이 기술을 사용했는가</h3>
               <div class="smart-grid">
                 <article>
-                  <h4>React + TypeScript</h4>
+                  <h4>React, Vite, TypeScript</h4>
                   <p>
-                    Home, Analysis, Project, Share, Mypage 화면에서 파일
-                    업로드, 채팅, 원본 미리보기, 시각화 결과를 한 화면 흐름으로
-                    연결했습니다.
+                    문서 업로드, 분석 결과, 비교 화면처럼 상태 변화가 많은 UI를
+                    빠르게 구성하기 위해 사용했습니다. TypeScript로 API 응답과
+                    화면 데이터의 형태를 맞추며 연결 오류를 줄였습니다.
                   </p>
                 </article>
                 <article>
-                  <h4>FastAPI Backend</h4>
+                  <h4>Python, FastAPI</h4>
                   <p>
-                    auth, analysis, visuals, projects, shared_rooms 라우터를
-                    분리하고 JWT 인증, 요청 ID, MongoDB 연동 구조로 API 서버를
-                    구성했습니다.
+                    HWP/HWPX 파싱, 텍스트 정규화, LLM 요청처럼 문서 처리와 AI
+                    연동이 많은 작업에 Python을 사용했습니다. FastAPI로 분석,
+                    인증, 문서 비교 API를 나누어 프론트엔드와 연결했습니다.
                   </p>
                 </article>
                 <article>
-                  <h4>Analysis Pipeline</h4>
+                  <h4>MongoDB, AWS, Vercel, Docker</h4>
                   <p>
-                    document_analysis.py, llm_analysis.py,
-                    analysis_pipeline.py를 통해 문서 추출, 로컬 분석, LLM 분석,
-                    근거 검증, 시각화 생성을 연결했습니다.
+                    사용자 정보와 분석 결과를 저장하기 위해 MongoDB를 사용했고,
+                    프론트엔드는 Vercel, 백엔드는 AWS EC2로 배포했습니다.
+                    Docker와 GitHub로 실행 환경과 협업 흐름을 맞췄습니다.
                   </p>
                 </article>
               </div>
             </section>
 
             <section class="smart-section">
-              <h3>Action · 구현 방향</h3>
+              <h3>Action · 내가 수행한 개선</h3>
               <div class="smart-timeline">
                 <div>
                   <span>01</span>
-                  <p>파일과 질문을 입력하면 /api/analysis/chat으로 전달하고, 문서 텍스트를 추출하는 흐름을 설계했습니다.</p>
+                  <p>로컬 분석과 LLM 분석이 전환되는 조건을 확인하고, 과도하게 막히던 grounding 검증을 보류하는 방향으로 파이프라인을 단순화했습니다.</p>
                 </div>
                 <div>
                   <span>02</span>
-                  <p>관련 구간, 수치 후보, grounding 검증을 통해 AI 답변이 문서 근거와 맞는지 확인하는 구조를 잡았습니다.</p>
+                  <p>OCR로 잡히는 이미지성 데이터는 따로 보관하고, 실제 텍스트만 정규화해 PDF를 생성하도록 문서 변환 흐름을 정리했습니다.</p>
                 </div>
                 <div>
                   <span>03</span>
-                  <p>분석 답변을 기반으로 표, 그래프, 이미지, 마인드맵 시각화 API와 연결했습니다.</p>
+                  <p>EC2 배포 환경에서 HTTP를 HTTPS로 전환하고, Vercel에서 사용한 해싱 방식을 참고해 토큰 재사용 위험을 줄였습니다.</p>
                 </div>
                 <div>
                   <span>04</span>
-                  <p>분석 대화, 파일, 시각화 결과를 프로젝트 단위로 저장하고 초대 코드 기반 공유방으로 확장했습니다.</p>
+                  <p>문서 유사도 비교는 OpenAI API 기반 청킹 결과를 활용해 비교 가능하도록 유도하고, 비교가 불가능한 경우에는 상태를 명확히 표시했습니다.</p>
                 </div>
               </div>
             </section>
 
             <section class="smart-section smart-result">
-              <h3>Result · 현재 성과와 성장 포인트</h3>
+              <h3>Result · 결과와 회고</h3>
               <ul>
-                <li>업로드, 미리보기, 문서 기반 답변, 시각화, 저장으로 이어지는 핵심 서비스 흐름을 구현했습니다.</li>
-                <li>FastAPI 라우터와 서비스 레이어를 분리해 인증, 분석, 시각화, 프로젝트, 공유방 기능을 확장하기 쉽게 구성했습니다.</li>
-                <li>OpenAI 응답 실패나 키 미설정 상황에서도 로컬 분석 결과를 제공하는 fallback 관점을 반영했습니다.</li>
-                <li>향후에는 RAG 검색 고도화, 페이지·문단 근거 표시, LLM 응답 캐싱, 비동기 작업 큐로 발전시킬 계획입니다.</li>
+                <li>분석 결과 표시, PDF 변환, EC2 배포 환경 로그인 문제는 정상 동작하도록 해결했습니다.</li>
+                <li>문서 유사도 비교는 OpenAI API를 활용한 방식으로 일부 개선했지만, 로컬 fallback까지 완전히 해결하지는 못했습니다.</li>
+                <li>해결하지 못한 경우에도 빈 화면 대신 비교 불가 상태를 보여주도록 예외 처리를 적용했습니다.</li>
+                <li>생성형 AI는 속도를 높여 주지만, 실제 서비스에 넣기 전에는 직접 검증하고 의심하는 태도가 필요하다는 점을 배웠습니다.</li>
               </ul>
               <div class="smart-links">
-                <a href="https://youtu.be/Sc2-2z0TjoU" target="_blank" rel="noreferrer">
+                <a href="https://youtu.be/qQReeGane3o" target="_blank" rel="noreferrer">
                   <i class="fa-brands fa-youtube"></i>
                   프로젝트 영상 보기
                 </a>

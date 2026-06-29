@@ -1254,6 +1254,14 @@ body.ai-study-modal-open {
   .study-book-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+  .smart-hero {
+    grid-template-columns: 1fr;
+  }
+  .smart-kpis,
+  .smart-grid,
+  .smart-timeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 /* smart factory case study modal */
